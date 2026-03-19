@@ -1,82 +1,496 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <title>Bashir Browser</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body{
-      margin:0;
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background:linear-gradient(135deg,#141e30,#243b55);
-      font-family:Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع بحث - Abdulrahman Ahmed Bashir</title>
+    <style>
+        /* --- CSS: التصميم والألوان --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #202124;
+            --search-bg: #ffffff;
+            --search-border: #dfe1e5;
+            --search-hover: #dfe1e5;
+            --btn-bg: #f8f9fa;
+            --btn-hover: #f1f3f4;
+            --footer-bg: #f2f2f2;
+            --modal-bg: #ffffff;
+            --input-bg: #ffffff;
+        }
 
-    .container{
-      text-align:center;
-    }
+        /* الوضع الداكن */
+        body.dark-mode {
+            --bg-color: #202124;
+            --text-color: #e8eaed;
+            --search-bg: #303134;
+            --search-border: #5f6368;
+            --search-hover: #5f6368;
+            --btn-bg: #303134;
+            --btn-hover: #3c4043;
+            --footer-bg: #171717;
+            --modal-bg: #202124;
+            --input-bg: #303134;
+        }
 
-    h1{
-      color:white;
-      margin-bottom:30px;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-    .search-box{
-      display:flex;
-      background:white;
-      border-radius:30px;
-      overflow:hidden;
-      box-shadow:0 4px 20px rgba(0,0,0,0.3);
-    }
+        /* الهيدر العلوي */
+        header {
+            display: flex;            justify-content: flex-end;
+            align-items: center;
+            padding: 20px;
+            font-size: 13px;
+        }
 
-    input{
-      border:none;
-      padding:15px;
-      width:250px;
-      outline:none;
-      font-size:16px;
-    }
+        header a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
 
-    button{
-      border:none;
-      padding:15px 25px;
-      background:#00c6ff;
-      color:white;
-      cursor:pointer;
-      font-size:16px;
-    }
+        header a:hover {
+            text-decoration: underline;
+        }
 
-    button:hover{
-      background:#0095cc;
-    }
-  </style>
+        .settings-icon {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            margin-left: 15px;
+            fill: var(--text-color);
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #4285f4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        /* المحتوى الرئيسي */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -50px;
+        }
+
+        .logo {            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .logo span:nth-child(1) { color: #4285f4; }
+        .logo span:nth-child(2) { color: #ea4335; }
+        .logo span:nth-child(3) { color: #fbbc05; }
+        .logo span:nth-child(4) { color: #4285f4; }
+        .logo span:nth-child(5) { color: #34a853; }
+        .logo span:nth-child(6) { color: #ea4335; }
+
+        .search-container {
+            width: 100%;
+            max-width: 584px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 24px;
+            border: 1px solid var(--search-border);
+            background-color: var(--search-bg);
+            color: var(--text-color);
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .search-box:hover, .search-box:focus {
+            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+            border-color: transparent;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            background-color: var(--btn-bg);
+            border: 1px solid transparent;
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: var(--btn-hover);
+            border-color: #dadce0;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: var(--footer-bg);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            padding-left: 30px;
+            padding-right: 30px;
+            font-size: 14px;
+            border-top: 1px solid var(--search-border);
+        }
+
+        /* نافذة الإعدادات وتسجيل الدخول (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--modal-bg);
+            padding: 30px;
+            border-radius: 8px;
+            width: 350px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        .modal h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .setting-item {
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid var(--search-border);
+            background: var(--input-bg);
+            color: var(--text-color);
+            box-sizing: border-box;
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .login-btn:hover {
+            background-color: #155cb0;
+        }
+
+        /* التبديل (Toggle Switch) */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: #2196F3; }
+        input:checked + .slider:before { transform: translateX(20px); }
+
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>Bashir Browser 🔥</h1>
-    <div class="search-box">
-      <input type="text" id="searchBox" placeholder="Search anything...">
-      <button onclick="search()">Search</button>
-    </div>
-  </div>
 
-  <script>
-    function search(){
-      var q = document.getElementById("searchBox").value;
-      if(q.trim() !== ""){
-        window.open("https://www.google.com/search?q=" + q, "_blank");
-      }
-    }
+    <!-- الهيدر -->
+    <header>
+        <a href="#" id="link-gmail">Gmail</a>
+        <a href="#" id="link-images">الصور</a>
+        <div class="user-avatar" id="userAvatar" onclick="openLoginModal()">?</div>
+        <svg class="settings-icon" viewBox="0 0 24 24" onclick="openSettingsModal()">
+            <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+        </svg>
+    </header>
 
-    document.getElementById("searchBox")
-    .addEventListener("keypress", function(event){
-      if(event.key === "Enter"){
-        search();
-      }
-    });
-  </script>
+    <!-- المحتوى الرئيسي -->
+    <main>
+        <div class="logo">
+            <span>A</span><span>b</span><span>d</span><span>u</span><span>l</span><span>rahman</span>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchInput" placeholder="ابحث في جوجل أو اكتب عنوان موقع إلكتروني">
+            
+            <div class="buttons">
+                <button class="btn" id="btn-search" onclick="performSearch()">بحث جوجل</button>
+                <button class="btn" id="btn-lucky" onclick="luckySearch()">ضربة حظ</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer>        <div id="footer-left">
+            <span id="text-country">مصر</span>
+        </div>
+        <div id="footer-right">
+            <a href="#" id="link-about">حول</a>
+            <a href="#" id="link-ads">الإعلانات</a>
+            <a href="#" id="link-business">الأعمال</a>
+            <a href="#" id="link-privacy">الخصوصية</a>
+            <a href="#" id="link-terms">الشروط</a>
+            <a href="#" id="link-settings">الإعدادات</a>
+        </div>
+    </footer>
+
+    <!-- نافذة الإعدادات وتسجيل الدخول -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSettingsModal()">&times;</span>
+            
+            <!-- قسم تسجيل الدخول -->
+            <div id="loginSection">
+                <h2 id="loginTitle">تسجيل الدخول</h2>
+                <p id="loginDesc">أدخل بريدك الإلكتروني للوصول إلى حسابك الخاص.</p>
+                <input type="email" id="emailInput" class="login-input" placeholder="البريد الإلكتروني">
+                <input type="password" id="passInput" class="login-input" placeholder="كلمة المرور (تجربة)">
+                <button class="login-btn" onclick="handleLogin()">دخول</button>
+            </div>
+
+            <!-- قسم الإعدادات (يظهر بعد تسجيل الدخول أو دائماً) -->
+            <hr style="border: 0; border-top: 1px solid var(--search-border); margin: 20px 0;">
+            
+            <div class="setting-item">
+                <span id="label-darkmode">الوضع الداكن</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-item">
+                <span id="label-language">اللغة (English)</span>
+                <label class="switch">
+                    <input type="checkbox" id="langToggle" onchange="toggleLanguage()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div id="userInfo" style="margin-top:15px; font-size:14px; color: #888; display:none;">
+                مرحباً، <span id="displayEmail"></span>
+            </div>
+        </div>    </div>
+
+    <script>
+        /* --- JavaScript: الوظائف والمنطق --- */
+
+        // المتغيرات
+        let isDarkMode = false;
+        let currentLang = 'ar'; // ar = عربي, en = إنجليزي
+        let isLoggedIn = false;
+
+        // النصوص (القاموس)
+        const translations = {
+            ar: {
+                searchPlaceholder: "ابحث في جوجل أو اكتب عنوان موقع إلكتروني",
+                btnSearch: "بحث جوجل",
+                btnLucky: "ضربة حظ",
+                footerCountry: "مصر",
+                footerAbout: "حول",
+                footerAds: "الإعلانات",
+                footerBusiness: "الأعمال",
+                footerPrivacy: "الخصوصية",
+                footerTerms: "الشروط",
+                footerSettings: "الإعدادات",
+                loginTitle: "تسجيل الدخول",
+                loginDesc: "أدخل بريدك الإلكتروني للوصول إلى حسابك الخاص.",
+                emailPlace: "البريد الإلكتروني",
+                passPlace: "كلمة المرور",
+                btnLogin: "دخول",
+                labelDark: "الوضع الداكن",
+                labelLang: "اللغة (English)"
+            },
+            en: {
+                searchPlaceholder: "Search Google or type a URL",
+                btnSearch: "Google Search",
+                btnLucky: "I'm Feeling Lucky",
+                footerCountry: "Egypt",
+                footerAbout: "About",
+                footerAds: "Advertising",
+                footerBusiness: "Business",
+                footerPrivacy: "Privacy",
+                footerTerms: "Terms",
+                footerSettings: "Settings",
+                loginTitle: "Sign In",
+                loginDesc: "Enter your email to access your private account.",
+                emailPlace: "Email",
+                passPlace: "Password",
+                btnLogin: "Sign In",
+                labelDark: "Dark Mode",
+                labelLang: "Language (العربية)"
+            }        };
+
+        // دالة البحث
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
+            if (query) {
+                // هنا يتم التوجيه لنتائج جوجل الحقيقية
+                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            }
+        }
+
+        // دالة ضربة حظ (توجه لأول نتيجة تقريباً)
+        function luckySearch() {
+            const query = document.getElementById('searchInput').value;
+            if (query) {
+                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}&btnI=1`;
+            }
+        }
+
+        // تشغيل البحث عند ضغط Enter
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // فتح وإغلاق نافذة الإعدادات
+        function openSettingsModal() {
+            document.getElementById('settingsModal').style.display = 'flex';
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settingsModal').style.display = 'none';
+        }
+
+        // تبديل الوضع الداكن
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode');
+            // يمكن حفظ التفضيل في LocalStorage هنا
+        }
+
+        // تبديل اللغة
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            updateTexts();
+        }
+        // تحديث النصوص بناءً على اللغة
+        function updateTexts() {
+            const t = translations[currentLang];
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            document.getElementById('btn-search').innerText = t.btnSearch;
+            document.getElementById('btn-lucky').innerText = t.btnLucky;
+            document.getElementById('text-country').innerText = t.footerCountry;
+            document.getElementById('link-about').innerText = t.footerAbout;
+            document.getElementById('link-ads').innerText = t.footerAds;
+            document.getElementById('link-business').innerText = t.footerBusiness;
+            document.getElementById('link-privacy').innerText = t.footerPrivacy;
+            document.getElementById('link-terms').innerText = t.footerTerms;
+            document.getElementById('link-settings').innerText = t.footerSettings;
+            
+            document.getElementById('loginTitle').innerText = t.loginTitle;
+            document.getElementById('loginDesc').innerText = t.loginDesc;
+            document.getElementById('emailInput').placeholder = t.emailPlace;
+            document.getElementById('passInput').placeholder = t.passPlace;
+            document.getElementById('btnLogin').innerText = t.btnLogin;
+            document.getElementById('label-darkmode').innerText = t.labelDark;
+            document.getElementById('label-language').innerText = t.labelLang;
+        }
+
+        // محاكاة تسجيل الدخول
+        function handleLogin() {
+            const email = document.getElementById('emailInput').value;
+            if(email) {
+                isLoggedIn = true;
+                document.getElementById('loginSection').style.display = 'none'; // إخفاء نموذج الدخول
+                document.getElementById('userInfo').style.display = 'block'; // إظهار معلومات المستخدم
+                document.getElementById('displayEmail').innerText = email;
+                
+                // تغيير أيقونة المستخدم
+                const avatar = document.getElementById('userAvatar');
+                avatar.innerText = email.charAt(0).toUpperCase();
+                avatar.style.backgroundColor = '#ea4335'; // لون مختلف للمستخدم المسجل
+                avatar.onclick = openSettingsModal; // فتح الإعدادات عند الضغط
+                
+                alert("تم تسجيل الدخول بنجاح كـ: " + email);
+            } else {
+                alert("الرجاء إدخال بريد إلكتروني");
+            }
+        }
+
+        function openLoginModal() {
+            if(!isLoggedIn) {
+                openSettingsModal();
+            } else {
+                // إذا كان مسجلاً، يمكن عرض قائمة منسدلة (تبسيطاً سنبقيها تفتح الإعدادات)
+                openSettingsModal();            }
+        }
+
+    </script>
 </body>
 </html>

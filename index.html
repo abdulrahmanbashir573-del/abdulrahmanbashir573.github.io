@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة عبدالرحمن أحمد بشير</title>
+    <title>عبدالرحمن أحمد بشير</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
         * {
             margin: 0;
@@ -14,363 +14,344 @@
         }
 
         :root {
-            --primary-color: #6366f1;
-            --secondary-color: #8b5cf6;
-            --accent-color: #ec4899;
-            --bg-gradient-start: #1e1b4b;
-            --bg-gradient-end: #312e81;
-            --card-bg: #ffffff;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --button-bg: #6366f1;
-            --button-hover: #4f46e5;
+            --bg-color: #ffffff;
+            --text-color: #202124;
+            --search-bg: #ffffff;
+            --search-border: #dfe1e5;
+            --search-shadow: rgba(32,33,36,0.28);
+            --button-bg: #f8f9fa;
+            --button-hover: #f1f3f4;
+            --icon-color: #5f6368;
+            --icon-hover: #70757a;
         }
 
         body.dark-mode {
-            --bg-gradient-start: #0f172a;
-            --bg-gradient-end: #1e293b;
-            --card-bg: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --button-bg: #818cf8;
-            --button-hover: #6366f1;
+            --bg-color: #202124;
+            --text-color: #e8eaed;
+            --search-bg: #303134;
+            --search-border: #5f6368;
+            --search-shadow: rgba(0,0,0,0.5);
+            --button-bg: #303134;
+            --button-hover: #3c4043;
+            --icon-color: #9aa0a6;
+            --icon-hover: #c4c7c5;
         }
 
         body {
-            font-family: 'Cairo', sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
             overflow: hidden;
-            transition: all 0.5s ease;
-        }
-
-        /* شاشة تسجيل الدخول */        .login-container {
-            background: var(--card-bg);
-            padding: 50px 40px;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            width: 90%;
-            max-width: 450px;
-            text-align: center;
-            animation: slideUp 0.6s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 35px;
-            font-size: 15px;
-        }
-
-        .input-group {
-            margin-bottom: 25px;
-            text-align: right;
-        }
-
-        .input-group label {
-            display: block;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .input-field {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            font-size: 15px;
-            font-family: 'Cairo', sans-serif;
             transition: all 0.3s ease;
-            background: var(--card-bg);
-            color: var(--text-primary);
         }
 
-        body.dark-mode .input-field {
-            border-color: #334155;
-            background: #0f172a;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--button-bg), var(--secondary-color));
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Cairo', sans-serif;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
-        }
-
-        .login-btn:active {
-            transform: translateY(0);
-        }
-
-        /* الواجهة الرئيسية */
-        .main-container {            display: none;
-            width: 100%;
-            max-width: 800px;
-            padding: 20px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .header {
-            background: var(--card-bg);
-            padding: 25px 35px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            display: flex;
+        /* الهيدر */
+        .header {            display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 15px 20px;
+            height: 60px;
         }
 
-        .user-info {
+        .header-right {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 8px;
+        }
+
+        .icon-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: var(--icon-color);
+        }
+
+        .icon-button:hover {
+            background: var(--button-hover);
+            color: var(--icon-hover);
+        }
+
+        .icon-button svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
 
         .avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 20px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;            border: none;
+            transition: all 0.2s;
         }
 
         .avatar:hover {
-            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
         }
 
-        .user-name {
-            color: var(--text-primary);            font-weight: 600;
-            font-size: 16px;
-        }
-
-        .controls {
+        /* المحتوى الرئيسي */
+        .main-content {
             display: flex;
-            gap: 12px;
-        }
-
-        .icon-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            border: none;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            cursor: pointer;
-            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+            height: calc(100vh - 120px);
+            padding: 20px;
         }
 
-        .icon-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        .logo {
+            font-size: 90px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
         }
 
-        /* صندوق البحث */
+        .logo span:nth-child(1) { color: #4285f4; }
+        .logo span:nth-child(2) { color: #ea4335; }
+        .logo span:nth-child(3) { color: #fbbc05; }
+        .logo span:nth-child(4) { color: #4285f4; }
+        .logo span:nth-child(5) { color: #34a853; }
+        .logo span:nth-child(6) { color: #ea4335; }
+
         .search-container {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 584px;
+            position: relative;
         }
 
         .search-box {
+            width: 100%;
             display: flex;
             align-items: center;
-            background: #f3f4f6;
-            border-radius: 16px;
-            padding: 8px;
-            margin-bottom: 25px;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
+            background: var(--search-bg);
+            border: 1px solid var(--search-border);
+            border-radius: 24px;
+            padding: 12px 20px;
+            transition: all 0.2s;
         }
 
-        body.dark-mode .search-box {
-            background: #0f172a;        }
-
-        .search-box:focus-within {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        .search-box:hover, .search-box:focus-within {            box-shadow: 0 1px 6px var(--search-shadow);
+            border-color: transparent;
         }
 
         .search-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 15px;
-            color: var(--text-secondary);
+            width: 20px;
+            height: 20px;
+            fill: var(--icon-color);
+            margin-left: 12px;
         }
 
         .search-input {
             flex: 1;
             border: none;
             background: transparent;
-            padding: 15px;
-            font-size: 17px;
-            font-family: 'Cairo', sans-serif;
-            color: var(--text-primary);
+            font-size: 16px;
+            color: var(--text-color);
             outline: none;
+            font-family: 'Roboto', sans-serif;
         }
 
         .search-buttons {
+            margin-top: 30px;
             display: flex;
             gap: 12px;
             justify-content: center;
         }
 
-        .search-btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 600;
+        .btn {
+            background: var(--button-bg);
+            border: 1px solid transparent;
+            color: var(--text-color);
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--button-hover);
+            border-color: #dadce0;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+
+        /* الفوتر */
+        .footer {
+            background: var(--button-bg);
+            padding: 12px 20px;            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: var(--icon-color);
+            border-top: 1px solid var(--search-border);
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .footer-left {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer a {
+            color: var(--icon-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .clock {
+            font-weight: 500;
             font-size: 15px;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--button-bg), var(--secondary-color));
-            color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        /* شاشة تسجيل الدخول */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
         }
 
-        .btn-secondary {
-            background: #e5e7eb;            color: var(--text-primary);
+        .login-box {
+            background: var(--bg-color);            border: 1px solid var(--search-border);
+            border-radius: 8px;
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        body.dark-mode .btn-secondary {
-            background: #334155;
+        .login-title {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--text-color);
+            margin-bottom: 8px;
         }
 
-        .search-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        .login-subtitle {
+            font-size: 16px;
+            color: var(--text-color);
+            margin-bottom: 40px;
         }
 
-        /* نافذة الإعدادات */
-        .settings-panel {
-            display: none;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            margin-top: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            animation: slideDown 0.3s ease;
+        .login-subtitle span {
+            color: #1a73e8;
+            font-weight: 500;
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .settings-title {
-            color: var(--text-primary);
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e5e7eb;
-        }
-
-        body.dark-mode .settings-title {
-            border-bottom-color: #334155;
-        }
-
-        .setting-item {
-            margin-bottom: 25px;
-        }
-        .setting-label {
-            display: block;
-            color: var(--text-primary);
-            font-weight: 600;
+        .input-field {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid var(--search-border);
+            border-radius: 4px;
+            font-size: 16px;
             margin-bottom: 10px;
-            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
         }
 
-        .toggle-container {
+        .input-field:focus {
+            outline: none;
+            border-color: #1a73e8;
+            border-width: 2px;
+            padding: 12px 14px;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px 24px;
+            background: #1a73e8;
+            color: white;            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .login-button:hover {
+            background: #1557b0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* قائمة الإعدادات */
+        .settings-menu {
+            position: fixed;
+            top: 65px;
+            right: 20px;
+            background: var(--bg-color);
+            border: 1px solid var(--search-border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            padding: 10px 0;
+            min-width: 280px;
+            display: none;
+            z-index: 100;
+        }
+
+        .settings-menu.active {
+            display: block;
+        }
+
+        .settings-item {
+            padding: 12px 20px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px;
-            background: #f3f4f6;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            color: var(--text-color);
+            font-size: 14px;
         }
 
-        body.dark-mode .toggle-container {
-            background: #0f172a;
+        .settings-item:hover {
+            background: var(--button-hover);
         }
 
-        .toggle-switch {
+        .settings-item svg {
+            width: 20px;
+            height: 20px;            fill: var(--icon-color);
+            margin-left: 12px;
+        }
+
+        .toggle {
             position: relative;
-            width: 60px;
-            height: 30px;
+            width: 36px;
+            height: 20px;
         }
 
-        .toggle-switch input {
+        .toggle input {
             opacity: 0;
             width: 0;
             height: 0;
@@ -383,161 +364,148 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #cbd5e1;
-            transition: 0.4s;
-            border-radius: 30px;
+            background-color: #dadce0;
+            transition: 0.3s;
+            border-radius: 20px;
         }
 
         .toggle-slider:before {
             position: absolute;
-            content: "";            height: 22px;
-            width: 22px;
-            left: 4px;
-            bottom: 4px;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
             background-color: white;
-            transition: 0.4s;
+            transition: 0.3s;
             border-radius: 50%;
         }
 
         input:checked + .toggle-slider {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background-color: #1a73e8;
         }
 
         input:checked + .toggle-slider:before {
-            transform: translateX(30px);
+            transform: translateX(16px);
         }
 
-        .bg-input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5e7eb;
-            border-radius: 10px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 14px;
-            margin-bottom: 10px;
-            background: var(--card-bg);
-            color: var(--text-primary);
+        .settings-divider {
+            height: 1px;            background: var(--search-border);
+            margin: 8px 0;
         }
 
-        body.dark-mode .bg-input {
-            border-color: #334155;
-            background: #0f172a;
+        .settings-header {
+            padding: 8px 20px;
+            font-size: 12px;
+            color: var(--icon-color);
+            font-weight: 500;
         }
 
-        .apply-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, var(--button-bg), var(--secondary-color));
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .apply-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);        }
-
-        .logout-btn {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: #ef4444;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .logout-btn:hover {
-            background: #dc2626;
-            transform: translateY(-2px);
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
 <body>
 
     <!-- شاشة تسجيل الدخول -->
-    <div class="login-container" id="loginScreen">
-        <div class="logo">عبدالرحمن</div>
-        <p class="subtitle">أهلاً بك! يرجى تسجيل الدخول للمتابعة</p>
-        
-        <div class="input-group">
-            <label for="loginEmail">البريد الإلكتروني</label>
-            <input type="email" id="loginEmail" class="input-field" placeholder="example@email.com">
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h1 class="login-title">تسجيل الدخول</h1>
+            <p class="login-subtitle">استخدم حساب <span>Google</span> الخاص بك</p>
+            <input type="email" class="input-field" id="loginEmail" placeholder="البريد الإلكتروني أو الهاتف">
+            <button class="login-button" onclick="handleLogin()">التالي</button>
         </div>
-        
-        <button class="login-btn" onclick="handleLogin()">تسجيل الدخول</button>
     </div>
 
-    <!-- الواجهة الرئيسية -->
-    <div class="main-container" id="mainContainer">
-        <div class="header">
-            <div class="user-info">
-                <div class="avatar" id="userAvatar" onclick="logout()" title="تسجيل خروج">ع</div>
-                <div class="user-name" id="userName">user@email.com</div>
+    <!-- المحتوى الرئيسي -->
+    <div id="mainContent" class="hidden">
+        <!-- الهيدر -->
+        <header class="header">
+            <div class="header-right">
+                <button class="icon-button" onclick="toggleSettings()" title="الإعدادات">
+                    <svg viewBox="0 0 24 24"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+                </button>
+                <div class="avatar" id="userAvatar" onclick="logout()" title="تسجيل الخروج">ع</div>
             </div>
-            
-            <div class="controls">
-                <button class="icon-btn" onclick="toggleSettings()" title="الإعدادات">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
-                    </svg>
-                </button>            </div>
-        </div>
+        </header>
 
-        <div class="search-container">
-            <div class="search-box">
-                <svg class="search-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                </svg>
-                <input type="text" class="search-input" id="searchInput" placeholder="ابحث في الويب..." onkeypress="handleEnter(event)">
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content">
+            <div class="logo">
+                <span>A</span><span>b</span><span>d</span><span>u</span><span>l</span><span>r</span><span>a</span><span>h</span><span>m</span><span>a</span><span>n</span>
             </div>
-            
-            <div class="search-buttons">
-                <button class="search-btn btn-primary" onclick="performSearch()">بحث</button>
-                <button class="search-btn btn-secondary" onclick="luckySearch()">ضربة حظ</button>
-            </div>
-        </div>
 
-        <!-- لوحة الإعدادات -->
-        <div class="settings-panel" id="settingsPanel">
-            <h3 class="settings-title">الإعدادات</h3>
-            
-            <div class="setting-item">
-                <div class="toggle-container">
-                    <span class="setting-label" style="margin: 0;">الوضع الداكن</span>
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="darkModeToggle" onchange="toggleTheme()">
-                        <span class="toggle-slider"></span>
-                    </label>
+            <div class="search-container">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <input type="text" class="search-input" id="searchInput" placeholder="ابحث في Google أو اكتب عنوان موقع إلكتروني" onkeypress="handleEnter(event)">                </div>
+                
+                <div class="search-buttons">
+                    <button class="btn" onclick="performSearch()">بحث Google</button>
+                    <button class="btn" onclick="luckySearch()">ضربة حظ</button>
                 </div>
             </div>
+        </main>
 
-            <div class="setting-item">
-                <label class="setting-label">تغيير الخلفية (رابط الصورة)</label>
-                <input type="text" class="bg-input" id="bgInput" placeholder="https://example.com/image.jpg">
-                <button class="apply-btn" onclick="changeBackground()">تطبيق الخلفية</button>
+        <!-- الفوتر -->
+        <footer class="footer">
+            <div class="footer-right">
+                <span id="locationText">مصر</span>
+            </div>
+            <div class="footer-left">
+                <a onclick="alert('قريباً')">حول</a>
+                <a onclick="alert('قريباً')">الإعلانات</a>
+                <a onclick="alert('قريباً')">الأعمال</a>
+                <a onclick="alert('قريباً')">الخصوصية</a>
+                <a onclick="alert('قريباً')">الشروط</a>
+                <a onclick="toggleSettings()">الإعدادات</a>
+            </div>
+            <div class="clock" id="clock">--:--</div>
+        </footer>
+
+        <!-- قائمة الإعدادات -->
+        <div class="settings-menu" id="settingsMenu">
+            <div class="settings-header">الإعدادات السريعة</div>
+            <div class="settings-divider"></div>
+            
+            <div class="settings-item" onclick="toggleTheme()">
+                <span id="darkModeText">الوضع الداكن</span>
+                <label class="toggle">
+                    <input type="checkbox" id="darkModeToggle" onchange="toggleTheme()">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-item" onclick="changeLanguage()">
+                <span id="langText">اللغة: العربية</span>
+            </div>
+
+            <div class="settings-item" onclick="changeBackground()">
+                <span>تغيير الخلفية</span>
+                <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </div>
+
+            <div class="settings-divider"></div>
+            
+            <div class="settings-item" onclick="logout()">                <span>تسجيل الخروج</span>
+                <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
             </div>
         </div>
     </div>
 
     <script>
-        // العناصر
-        const loginScreen = document.getElementById('loginScreen');
-        const mainContainer = document.getElementById('mainContainer');
-        const settingsPanel = document.getElementById('settingsPanel');
+        // المتغيرات العامة
+        let currentLang = 'ar';
+        let currentBg = '';
 
         // عند تحميل الصفحة
         window.onload = function() {
             const savedUser = localStorage.getItem('ab_user');
             const savedTheme = localStorage.getItem('ab_theme');
+            const savedLang = localStorage.getItem('ab_lang');
             const savedBg = localStorage.getItem('ab_bg');
+
             if (savedUser) {
                 showMainInterface(savedUser);
             }
@@ -547,30 +515,40 @@
                 document.getElementById('darkModeToggle').checked = true;
             }
 
-            if (savedBg) {
-                document.body.style.backgroundImage = `url('${savedBg}')`;
-                document.getElementById('bgInput').value = savedBg;
+            if (savedLang === 'en') {
+                currentLang = 'en';
+                updateLanguage();
             }
+
+            if (savedBg) {
+                currentBg = savedBg;
+                document.body.style.background = `url('${savedBg}') center/cover`;
+            }
+
+            // تشغيل الساعة
+            updateClock();
+            setInterval(updateClock, 1000);
         };
 
         // تسجيل الدخول
         function handleLogin() {
             const email = document.getElementById('loginEmail').value.trim();
             
-            if (email && email.includes('@') && email.includes('.')) {
+            if (email && email.includes('@')) {
                 localStorage.setItem('ab_user', email);
                 showMainInterface(email);
-            } else {
-                alert('الرجاء إدخال بريد إلكتروني صحيح');
+            } else {                alert('الرجاء إدخال بريد إلكتروني صحيح');
             }
         }
 
         // عرض الواجهة الرئيسية
         function showMainInterface(email) {
-            loginScreen.style.display = 'none';
-            mainContainer.style.display = 'block';
-            document.getElementById('userName').textContent = email;
-            document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
+            document.getElementById('loginOverlay').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+            
+            const avatar = document.getElementById('userAvatar');
+            avatar.textContent = email.charAt(0).toUpperCase();
+            avatar.title = email;
         }
 
         // تسجيل الخروج
@@ -587,6 +565,7 @@
                 performSearch();
             }
         }
+
         function performSearch() {
             const query = document.getElementById('searchInput').value.trim();
             if (query) {
@@ -603,12 +582,18 @@
 
         // الإعدادات
         function toggleSettings() {
-            if (settingsPanel.style.display === 'block') {
-                settingsPanel.style.display = 'none';
-            } else {
-                settingsPanel.style.display = 'block';
-            }
+            const menu = document.getElementById('settingsMenu');
+            menu.classList.toggle('active');
         }
+
+        // إغلاق القائمة عند النقر خارجها        document.addEventListener('click', function(e) {
+            const settingsMenu = document.getElementById('settingsMenu');
+            const settingsButton = e.target.closest('.icon-button');
+            
+            if (!settingsButton && !e.target.closest('.settings-menu')) {
+                settingsMenu.classList.remove('active');
+            }
+        });
 
         // الوضع الداكن
         function toggleTheme() {
@@ -617,17 +602,56 @@
             localStorage.setItem('ab_theme', isDark ? 'dark' : 'light');
         }
 
-        // تغيير الخلفية
-        function changeBackground() {
-            const url = document.getElementById('bgInput').value.trim();
-            if (url) {
-                document.body.style.backgroundImage = `url('${url}')`;
-                localStorage.setItem('ab_bg', url);
-                alert('تم تغيير الخلفية بنجاح!');
+        // تغيير اللغة
+        function changeLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('ab_lang', currentLang);
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            if (currentLang === 'en') {
+                document.documentElement.lang = 'en';
+                document.documentElement.dir = 'ltr';
+                document.getElementById('langText').textContent = 'Language: English';
+                document.getElementById('darkModeText').textContent = 'Dark Mode';
+                document.getElementById('locationText').textContent = 'Egypt';
+                document.querySelector('.search-input').placeholder = 'Search Google or type a URL';
+                document.querySelector('.btn:first-child').textContent = 'Google Search';
+                document.querySelector('.btn:last-child').textContent = "I'm Feeling Lucky";
             } else {
-                alert('الرجاء إدخال رابط صورة');
+                document.documentElement.lang = 'ar';
+                document.documentElement.dir = 'rtl';
+                document.getElementById('langText').textContent = 'اللغة: العربية';
+                document.getElementById('darkModeText').textContent = 'الوضع الداكن';
+                document.getElementById('locationText').textContent = 'مصر';
+                document.querySelector('.search-input').placeholder = 'ابحث في Google أو اكتب عنوان موقع إلكتروني';
+                document.querySelector('.btn:first-child').textContent = 'بحث Google';
+                document.querySelector('.btn:last-child').textContent = 'ضربة حظ';
             }
         }
+
+        // تغيير الخلفية
+        function changeBackground() {
+            const url = prompt('أدخل رابط الصورة:', currentBg);
+            if (url) {
+                currentBg = url;                document.body.style.background = `url('${url}') center/cover`;
+                localStorage.setItem('ab_bg', url);
+            }
+        }
+
+        // الساعة
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}`;
+        }
+
+        // منع إغلاق القائمة عند النقر داخلها
+        document.querySelector('.settings-menu').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
     </script>
 </body>
 </html>

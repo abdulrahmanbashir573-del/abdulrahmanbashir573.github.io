@@ -1,445 +1,261 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة عبدالرحمن أحمد بشير</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Search X AI</title>
 
-        :root {
-            --primary-color: #00d26a;
-            --bg-overlay: rgba(255, 255, 255, 0.75);
-            --glass-bg: rgba(255, 255, 255, 0.25);
-            --glass-border: rgba(255, 255, 255, 0.4);
-            --text-main: #333;
-            --text-secondary: #555;
-            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
 
-        body.dark-mode {
-            --bg-overlay: rgba(0, 0, 0, 0.85);
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-main: #fff;
-            --text-secondary: #ddd;
-            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-        }
+body{
+height:100vh;
+background: linear-gradient(270deg,#141e30,#243b55);
+background-size:600% 600%;
+animation:bg 12s infinite;
+color:white;
+overflow:hidden;
+transition:.3s;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-            height: 100vh;
-            overflow: hidden;
-            background: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+@keyframes bg{
+0%{background-position:0%}
+50%{background-position:100%}
+100%{background-position:0%}
+}
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-overlay);
-            backdrop-filter: blur(10px);
-            z-index: 0;        }
+.glass{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
 
-        #login-screen {
-            position: relative;
-            z-index: 10;
-            background: var(--glass-bg);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--glass-border);
-            text-align: center;
-            width: 350px;
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.8s ease;
-        }
+/* top */
+.top{
+display:flex;
+justify-content:space-between;
+padding:15px;
+}
 
-        .logo-text {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: var(--text-main);
-        }
+.icon{cursor:pointer;padding:10px}
 
-        .logo-text span { 
-            color: var(--primary-color); 
-        }
+/* profile */
+.profile{
+width:45px;height:45px;border-radius:50%;border:2px solid white;
+}
 
-        .welcome-text {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
+/* center */
+.center{
+position:absolute;
+top:50%;left:50%;
+transform:translate(-50%,-50%);
+width:90%;max-width:550px;
+}
 
-        input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: 1px solid var(--glass-border);
-            background: rgba(255,255,255,0.5);
-            color: #333;
-            outline: none;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
+.search{
+display:flex;padding:10px;
+}
 
-        body.dark-mode input {
-            background: rgba(0,0,0,0.3);
-            color: #fff;
-            border: 1px solid #555;        }
+.search input{
+flex:1;padding:15px;border:none;background:transparent;color:white;font-size:16px;
+}
 
-        .btn-main {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-            font-family: 'Cairo', sans-serif;
-        }
+.search button{
+background:#00c6ff;border:none;padding:12px 20px;border-radius:10px;
+}
 
-        .btn-main:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 210, 106, 0.4);
-        }
+/* suggestions */
+.suggestions div{
+padding:10px;cursor:pointer;
+}
+.suggestions div:hover{
+background:rgba(255,255,255,0.2);
+}
 
-        .btn-main:active {
-            transform: translateY(0);
-        }
+/* settings */
+.settings{
+position:fixed;right:-320px;top:0;width:300px;height:100%;
+padding:20px;transition:.4s;
+}
+.settings.active{right:0;}
 
-        #main-interface {
-            display: none;
-            position: relative;
-            z-index: 5;
-            width: 100%;
-            height: 100%;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+.btn{
+width:100%;margin:8px 0;padding:10px;border:none;border-radius:10px;cursor:pointer;
+}
 
-        .search-box-container {
-            background: var(--glass-bg);
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            width: 90%;
-            max-width: 600px;
-            backdrop-filter: blur(15px);
-        }
-        .search-input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            padding: 10px;
-            font-size: 18px;
-            color: var(--text-main);
-            outline: none;
-            font-family: 'Cairo', sans-serif;
-        }
+/* chat */
+.chat{
+position:fixed;
+bottom:20px;
+right:20px;
+width:300px;
+height:400px;
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
 
-        .settings-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-            transition: 0.3s;
-            box-shadow: var(--shadow);
-            z-index: 20;
-        }
+.chat-header{
+padding:10px;
+text-align:center;
+}
 
-        .settings-btn:hover {
-            background: var(--primary-color);
-            transform: rotate(90deg);
-        }
+.chat-messages{
+flex:1;
+padding:10px;
+overflow:auto;
+font-size:14px;
+}
 
-        .user-info {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-main);
-            font-weight: bold;
-            z-index: 20;
-        }
+.chat-input{
+display:flex;
+}
 
-        .avatar-circle {
-            width: 40px;
-            height: 40px;            background: linear-gradient(45deg, #FF512F, #DD2476);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            cursor: pointer;
-        }
+.chat-input input{
+flex:1;
+padding:10px;
+border:none;
+}
 
-        #settings-modal {
-            display: none;
-            position: absolute;
-            top: 80px;
-            left: 20px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow);
-            width: 280px;
-            z-index: 30;
-        }
+.chat-input button{
+padding:10px;
+border:none;
+background:#00c6ff;
+}
 
-        .setting-row {
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-main);
-        }
+/* footer */
+.footer{
+position:fixed;bottom:10px;width:100%;text-align:center;font-size:13px;opacity:.7;
+}
+</style>
 
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-
-        .toggle-switch input { 
-            opacity: 0; 
-            width: 0; 
-            height: 0; 
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;            top: 0; 
-            left: 0; 
-            right: 0; 
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: var(--primary-color);
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        @keyframes fadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(20px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
-        }
-    </style>
 </head>
+
 <body>
 
-    <div class="overlay"></div>
+<div class="top">
+<div class="icon glass" onclick="toggleSettings()">⚙</div>
+<img src="https://i.pravatar.cc/100" class="profile">
+</div>
 
-    <!-- شاشة تسجيل الدخول -->
-    <div id="login-screen">
-        <div class="logo-text">بوابة <span>عبدالرحمن</span></div>
-        <p class="welcome-text">أهلاً بك، يرجى تسجيل الدخول للمتابعة</p>
-        <input type="email" id="loginEmail" placeholder="البريد الإلكتروني">        <button class="btn-main" onclick="handleLogin()">دخول</button>
-    </div>
+<div class="center">
+<div class="search glass">
+<input id="input" placeholder="ابحث...">
+<button onclick="search()">🔍</button>
+</div>
+<div id="sug" class="glass suggestions"></div>
+</div>
 
-    <!-- الواجهة الرئيسية -->
-    <div id="main-interface">
-        <div class="settings-btn" onclick="toggleSettings()">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--text-main)">
-                <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
-            </svg>
-        </div>
+<!-- settings -->
+<div class="settings glass" id="settings">
+<h3>⚙ Settings</h3>
 
-        <div class="user-info">
-            <span id="displayUserEmail">user@email.com</span>
-            <div class="avatar-circle" onclick="logout()" title="تسجيل خروج">خ</div>
-        </div>
+<button class="btn" onclick="setBg()">🌄 Custom BG</button>
+<button class="btn" onclick="bg1()">🏔 Nature</button>
+<button class="btn" onclick="bg2()">🌌 Space</button>
+<button class="btn" onclick="bg3()">🌆 City</button>
 
-        <div class="search-box-container">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--text-main)" style="margin-left: 10px;">
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-            </svg>
-            <input type="text" class="search-input" id="searchInput" placeholder="ابحث عما تريد..." onkeypress="handleEnter(event)">
-        </div>
+<button class="btn" onclick="toggleLang()">🌐 Language</button>
+<button class="btn" onclick="toggleMode()">🌙 Mode</button>
+</div>
 
-        <div id="settings-modal">
-            <div class="setting-row">
-                <span>الوضع الداكن</span>
-                <label class="toggle-switch">
-                    <input type="checkbox" id="darkModeToggle" onchange="toggleTheme()">
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <div class="setting-row" style="flex-direction: column; align-items: flex-start;">
-                <span style="margin-bottom: 5px; font-size: 14px;">رابط الخلفية (URL)</span>
-                <input type="text" id="bgInput" placeholder="ضع رابط الصورة هنا" style="width: 100%; font-size: 12px; padding: 5px; margin-bottom: 5px;">
-                <button class="btn-main" style="font-size: 12px; padding: 5px;" onclick="changeBackground()">تغيير الخلفية</button>
-            </div>
-        </div>
-    </div>
+<!-- AI CHAT -->
+<div class="chat glass">
+<div class="chat-header">🤖 AI</div>
+<div class="chat-messages" id="chat"></div>
+<div class="chat-input">
+<input id="chatInput">
+<button onclick="send()">➤</button>
+</div>
+</div>
 
-    <script>
-        // العناصر
-        const loginScreen = document.getElementById('login-screen');
-        const mainInterface = document.getElementById('main-interface');
-        const settingsModal = document.getElementById('settings-modal');
-        const body = document.body;
-        
-        // عند تحميل الصفحة
-        window.onload = function() {
-            const savedUser = localStorage.getItem('ab_user');
-            const savedTheme = localStorage.getItem('ab_theme');            const savedBg = localStorage.getItem('ab_bg');
+<div class="footer">
+Designed by Abdelrahman Bashir
+</div>
 
-            if (savedUser) {
-                showMainInterface(savedUser);
-            }
+<script>
+let input=document.getElementById("input")
+let sug=document.getElementById("sug")
 
-            if (savedTheme === 'dark') {
-                body.classList.add('dark-mode');
-                document.getElementById('darkModeToggle').checked = true;
-            }
+function search(){
+let q=input.value
+if(q) window.open("https://www.google.com/search?q="+q)
+}
 
-            if (savedBg) {
-                body.style.backgroundImage = `url('${savedBg}')`;
-                document.getElementById('bgInput').value = savedBg;
-            }
-        };
+/* suggestions */
+let words=["facebook","youtube","chatgpt","ai","games","coding"]
 
-        // دالة تسجيل الدخول - المهمة
-        function handleLogin() {
-            const emailInput = document.getElementById('loginEmail');
-            const email = emailInput.value.trim();
-            
-            if (email && email.includes('@') && email.includes('.')) {
-                // حفظ الإيميل
-                localStorage.setItem('ab_user', email);
-                
-                // الانتقال للشاشة الرئيسية
-                showMainInterface(email);
-                
-                // رسالة ترحيب
-                console.log('تم تسجيل الدخول بنجاح: ' + email);
-            } else {
-                alert('الرجاء إدخال بريد إلكتروني صحيح');
-                emailInput.focus();
-            }
-        }
+input.oninput=()=>{
+sug.innerHTML=""
+let v=input.value.toLowerCase()
+words.forEach(w=>{
+if(w.includes(v)&&v!=""){
+let d=document.createElement("div")
+d.innerText=w
+d.onclick=()=>{input.value=w;search()}
+sug.appendChild(d)
+}
+})
+}
 
-        // إظهار الواجهة الرئيسية
-        function showMainInterface(email) {
-            loginScreen.style.display = 'none';
-            mainInterface.style.display = 'flex';
-            document.getElementById('displayUserEmail').innerText = email;
-        }
+/* settings */
+function toggleSettings(){
+document.getElementById("settings").classList.toggle("active")
+}
 
-        // تسجيل الخروج
-        function logout() {
-            if(confirm('هل تريد تسجيل الخروج؟')) {
-                localStorage.removeItem('ab_user');
-                location.reload();
-            }        }
+/* backgrounds */
+function setBg(){
+let url=prompt("Image URL")
+if(url){
+document.body.style.background=`url(${url}) center/cover`
+localStorage.setItem("bg",url)
+}
+}
+function bg1(){set("https://picsum.photos/1920/1080?nature")}
+function bg2(){set("https://picsum.photos/1920/1080?space")}
+function bg3(){set("https://picsum.photos/1920/1080?city")}
 
-        // البحث
-        function handleEnter(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        }
+function set(u){
+document.body.style.background=`url(${u}) center/cover`
+localStorage.setItem("bg",u)
+}
 
-        function performSearch() {
-            const query = document.getElementById('searchInput').value.trim();
-            if (query) {
-                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-            }
-        }
+if(localStorage.getItem("bg")){
+document.body.style.background=`url(${localStorage.getItem("bg")}) center/cover`
+}
 
-        // الإعدادات
-        function toggleSettings() {
-            if (settingsModal.style.display === 'block') {
-                settingsModal.style.display = 'none';
-            } else {
-                settingsModal.style.display = 'block';
-            }
-        }
+/* language */
+let ar=true
+function toggleLang(){
+if(ar){input.placeholder="Search..."}
+else{input.placeholder="ابحث..."}
+ar=!ar
+}
 
-        // الوضع الداكن
-        function toggleTheme() {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('ab_theme', isDark ? 'dark' : 'light');
-        }
+/* mode */
+function toggleMode(){
+document.body.style.background="#111"
+}
 
-        // تغيير الخلفية
-        function changeBackground() {
-            const url = document.getElementById('bgInput').value.trim();
-            if (url) {
-                body.style.backgroundImage = `url('${url}')`;
-                localStorage.setItem('ab_bg', url);
-                alert('تم تغيير الخلفية بنجاح!');
-                toggleSettings();
-            } else {
-                alert('الرجاء إدخال رابط صورة');
-            }
-        }
+/* AI (simple demo) */
+function send(){
+let msg=document.getElementById("chatInput").value
+let chat=document.getElementById("chat")
 
-        // إغلاق الإعدادات عند النقر خارجها
-        window.onclick = function(event) {
-            if (!event.target.closest('.settings-btn') && !event.target.closest('#settings-modal')) {
-                settingsModal.style.display = 'none';
-            }        }
-    </script>
+chat.innerHTML+=`<div>👤 ${msg}</div>`
+
+let reply="أنا مساعد ذكي 😎"
+if(msg.includes("hello")) reply="Hi 👋"
+if(msg.includes("ai")) reply="AI is the future 🔥"
+if(msg.includes("اسمك")) reply="أنا AI Assistant"
+
+chat.innerHTML+=`<div>🤖 ${reply}</div>`
+
+document.getElementById("chatInput").value=""
+chat.scrollTop=chat.scrollHeight
+}
+</script>
+
 </body>
 </html>

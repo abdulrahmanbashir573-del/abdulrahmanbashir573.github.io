@@ -7,11 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --bg-color: #ffffff;
@@ -46,17 +42,24 @@
             transition: all 0.3s ease;
         }
 
+        /* الهيدر */
         .header {
-            display: flex;            justify-content: space-between;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            height: 60px;
+            padding: 15px 20px;            height: 60px;
         }
 
         .header-right {
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .icon-button {
@@ -93,16 +96,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 500;
-            font-size: 16px;
+            font-weight: 500;            font-size: 16px;
             cursor: pointer;
-            border: none;            transition: all 0.2s;
+            border: none;
+            transition: all 0.2s;
         }
 
         .avatar:hover {
             box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
         }
 
+        /* الساعة */
+        .clock {
+            font-weight: 500;
+            font-size: 15px;
+            color: var(--text-color);
+            padding: 8px 12px;
+            background: var(--button-bg);
+            border-radius: 20px;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        /* المحتوى الرئيسي */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -129,8 +145,7 @@
         .search-container {
             width: 100%;
             max-width: 584px;
-            position: relative;
-        }
+            position: relative;        }
 
         .search-box {
             width: 100%;
@@ -145,7 +160,8 @@
 
         .search-box:hover, .search-box:focus-within {
             box-shadow: 0 1px 6px var(--search-shadow);
-            border-color: transparent;        }
+            border-color: transparent;
+        }
 
         .search-icon {
             width: 20px;
@@ -178,8 +194,7 @@
             padding: 10px 16px;
             border-radius: 4px;
             font-size: 14px;
-            cursor: pointer;
-            font-family: 'Roboto', sans-serif;
+            cursor: pointer;            font-family: 'Roboto', sans-serif;
             transition: all 0.2s;
         }
 
@@ -189,25 +204,22 @@
             box-shadow: 0 1px 1px rgba(0,0,0,0.1);
         }
 
+        /* الفوتر */
         .footer {
             background: var(--button-bg);
             padding: 12px 20px;
             display: flex;
             justify-content: space-between;
-            align-items: center;            font-size: 14px;
+            align-items: center;
+            font-size: 14px;
             color: var(--icon-color);
             border-top: 1px solid var(--search-border);
         }
 
-        .footer-right {
+        .footer-right, .footer-left {
             display: flex;
             gap: 20px;
             align-items: center;
-        }
-
-        .footer-left {
-            display: flex;
-            gap: 20px;
         }
 
         .footer a {
@@ -216,22 +228,13 @@
             cursor: pointer;
         }
 
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .clock {
-            font-weight: 500;
-            font-size: 15px;
-        }
+        .footer a:hover { text-decoration: underline; }
 
         /* شاشة تسجيل الدخول */
         .login-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: var(--bg-color);
             display: flex;
             align-items: center;
@@ -240,10 +243,10 @@
         }
 
         .login-box {
-            background: var(--bg-color);
-            border: 1px solid var(--search-border);
+            background: var(--bg-color);            border: 1px solid var(--search-border);
             border-radius: 8px;
-            padding: 48px 40px;            width: 100%;
+            padding: 48px 40px;
+            width: 100%;
             max-width: 450px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -261,10 +264,7 @@
             margin-bottom: 40px;
         }
 
-        .login-subtitle span {
-            color: #1a73e8;
-            font-weight: 500;
-        }
+        .login-subtitle span { color: #1a73e8; font-weight: 500; }
 
         .input-field {
             width: 100%;
@@ -303,6 +303,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
+        /* قائمة الإعدادات */
         .settings-menu {
             position: fixed;
             top: 65px;
@@ -317,9 +318,7 @@
             z-index: 100;
         }
 
-        .settings-menu.active {
-            display: block;
-        }
+        .settings-menu.active { display: block; }
 
         .settings-item {
             padding: 12px 20px;
@@ -331,9 +330,7 @@
             font-size: 14px;
         }
 
-        .settings-item:hover {
-            background: var(--button-hover);
-        }
+        .settings-item:hover { background: var(--button-hover); }
 
         .settings-item svg {
             width: 20px;
@@ -341,25 +338,18 @@
             fill: var(--icon-color);
             margin-left: 12px;
         }
+
         .toggle {
             position: relative;
-            width: 36px;
-            height: 20px;
+            width: 36px;            height: 20px;
         }
 
-        .toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+        .toggle input { opacity: 0; width: 0; height: 0; }
 
         .toggle-slider {
             position: absolute;
             cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background-color: #dadce0;
             transition: 0.3s;
             border-radius: 20px;
@@ -377,19 +367,15 @@
             border-radius: 50%;
         }
 
-        input:checked + .toggle-slider {
-            background-color: #1a73e8;
-        }
-
-        input:checked + .toggle-slider:before {
-            transform: translateX(16px);
-        }
+        input:checked + .toggle-slider { background-color: #1a73e8; }
+        input:checked + .toggle-slider:before { transform: translateX(16px); }
 
         .settings-divider {
             height: 1px;
             background: var(--search-border);
             margin: 8px 0;
         }
+
         .settings-header {
             padding: 8px 20px;
             font-size: 12px;
@@ -397,17 +383,14 @@
             font-weight: 500;
         }
 
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
     <!-- شاشة تسجيل الدخول -->
     <div class="login-overlay" id="loginOverlay">
-        <div class="login-box">
-            <h1 class="login-title">تسجيل الدخول</h1>
+        <div class="login-box">            <h1 class="login-title">تسجيل الدخول</h1>
             <p class="login-subtitle">استخدم حساب <span>Google</span> الخاص بك</p>
             <input type="email" class="input-field" id="loginEmail" placeholder="البريد الإلكتروني أو الهاتف" onkeypress="handleLoginKeyPress(event)">
             <button class="login-button" onclick="handleLogin()">التالي</button>
@@ -418,10 +401,17 @@
     <div id="mainContent" class="hidden">
         <!-- الهيدر -->
         <header class="header">
+            <!-- اليمين: الإعدادات + الساعة + الأيقونة -->
             <div class="header-right">
+                <!-- زر الإعدادات -->
                 <button class="icon-button" onclick="toggleSettings()" title="الإعدادات">
                     <svg viewBox="0 0 24 24"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
                 </button>
+                
+                <!-- الساعة -->
+                <div class="clock" id="clock">--:--</div>
+                
+                <!-- أيقونة المستخدم -->
                 <div class="avatar" id="userAvatar" onclick="logout()" title="تسجيل الخروج">ع</div>
             </div>
         </header>
@@ -439,7 +429,8 @@
                 </div>
                 
                 <div class="search-buttons">
-                    <button class="btn" onclick="performSearch()">بحث Google</button>                    <button class="btn" onclick="luckySearch()">ضربة حظ</button>
+                    <button class="btn" onclick="performSearch()">بحث Google</button>
+                    <button class="btn" onclick="luckySearch()">ضربة حظ</button>
                 </div>
             </div>
         </main>
@@ -448,8 +439,7 @@
         <footer class="footer">
             <div class="footer-right">
                 <span id="locationText">مصر</span>
-            </div>
-            <div class="footer-left">
+            </div>            <div class="footer-left">
                 <a onclick="alert('قريباً')">حول</a>
                 <a onclick="alert('قريباً')">الإعلانات</a>
                 <a onclick="alert('قريباً')">الأعمال</a>
@@ -457,15 +447,15 @@
                 <a onclick="alert('قريباً')">الشروط</a>
                 <a onclick="toggleSettings()">الإعدادات</a>
             </div>
-            <div class="clock" id="clock">--:--</div>
         </footer>
 
         <!-- قائمة الإعدادات -->
         <div class="settings-menu" id="settingsMenu">
-            <div class="settings-header">الإعدادات السريعة</div>
+            <div class="settings-header">الإعدادات</div>
             <div class="settings-divider"></div>
             
-            <div class="settings-item" onclick="toggleTheme()">
+            <!-- الوضع الداكن -->
+            <div class="settings-item">
                 <span id="darkModeText">الوضع الداكن</span>
                 <label class="toggle">
                     <input type="checkbox" id="darkModeToggle" onchange="toggleTheme()">
@@ -473,10 +463,13 @@
                 </label>
             </div>
 
+            <!-- تغيير اللغة -->
             <div class="settings-item" onclick="changeLanguage()">
                 <span id="langText">اللغة: العربية</span>
+                <svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
             </div>
 
+            <!-- تغيير الخلفية -->
             <div class="settings-item" onclick="changeBackground()">
                 <span>تغيير الخلفية</span>
                 <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
@@ -484,109 +477,75 @@
 
             <div class="settings-divider"></div>
             
+            <!-- تسجيل الخروج -->
             <div class="settings-item" onclick="logout()">
                 <span>تسجيل الخروج</span>
                 <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
             </div>
-        </div>    </div>
+        </div>
+    </div>
 
     <script>
-        // المتغيرات العامة
         let currentLang = 'ar';
         let currentBg = '';
-
-        // عند تحميل الصفحة
         window.onload = function() {
-            console.log('Page loaded');
             const savedUser = localStorage.getItem('ab_user');
             const savedTheme = localStorage.getItem('ab_theme');
             const savedLang = localStorage.getItem('ab_lang');
             const savedBg = localStorage.getItem('ab_bg');
 
-            console.log('Saved user:', savedUser);
-
-            if (savedUser) {
-                showMainInterface(savedUser);
-            }
-
+            if (savedUser) { showMainInterface(savedUser); }
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-mode');
                 document.getElementById('darkModeToggle').checked = true;
             }
-
-            if (savedLang === 'en') {
-                currentLang = 'en';
-                updateLanguage();
-            }
-
+            if (savedLang === 'en') { currentLang = 'en'; updateLanguage(); }
             if (savedBg) {
                 currentBg = savedBg;
-                document.body.style.background = `url('${savedBg}') center/cover`;
+                document.body.style.background = `url('${savedBg}') center/cover no-repeat`;
             }
 
-            // تشغيل الساعة
             updateClock();
             setInterval(updateClock, 1000);
         };
 
-        // تسجيل الدخول
         function handleLogin() {
-            console.log('Login button clicked');
-            const emailInput = document.getElementById('loginEmail');
-            const email = emailInput.value.trim();
-            
-            console.log('Email entered:', email);
-            
-            if (email && email.includes('@')) {                localStorage.setItem('ab_user', email);
-                console.log('User saved to localStorage');
+            const email = document.getElementById('loginEmail').value.trim();
+            if (email && email.includes('@')) {
+                localStorage.setItem('ab_user', email);
                 showMainInterface(email);
             } else {
                 alert('الرجاء إدخال بريد إلكتروني صحيح');
-                emailInput.focus();
             }
         }
 
-        // التعامل مع زر Enter
         function handleLoginKeyPress(event) {
-            console.log('Key pressed:', event.key);
             if (event.key === 'Enter') {
                 event.preventDefault();
                 handleLogin();
             }
         }
 
-        // عرض الواجهة الرئيسية
         function showMainInterface(email) {
-            console.log('Showing main interface for:', email);
-            const loginOverlay = document.getElementById('loginOverlay');
-            const mainContent = document.getElementById('mainContent');
-            
-            loginOverlay.classList.add('hidden');
-            mainContent.classList.remove('hidden');
-            
+            document.getElementById('loginOverlay').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
             const avatar = document.getElementById('userAvatar');
             avatar.textContent = email.charAt(0).toUpperCase();
             avatar.title = email;
-            
-            console.log('Login successful');
         }
 
-        // تسجيل الخروج
         function logout() {
             if (confirm('هل تريد تسجيل الخروج؟')) {
                 localStorage.removeItem('ab_user');
-                location.reload();
-            }
+                location.reload();            }
         }
 
-        // البحث
         function handleEnter(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
+            if (e.key === 'Enter') { performSearch(); }
         }
 
-        function performSearch() {            const query = document.getElementById('searchInput').value.trim();
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
             if (query) {
                 window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
             }
@@ -599,30 +558,25 @@
             }
         }
 
-        // الإعدادات
         function toggleSettings() {
             const menu = document.getElementById('settingsMenu');
             menu.classList.toggle('active');
         }
 
-        // إغلاق القائمة عند النقر خارجها
         document.addEventListener('click', function(e) {
-            const settingsMenu = document.getElementById('settingsMenu');
-            const settingsButton = e.target.closest('.icon-button');
-            
-            if (!settingsButton && !e.target.closest('.settings-menu')) {
-                settingsMenu.classList.remove('active');
+            const menu = document.getElementById('settingsMenu');
+            const btn = e.target.closest('.icon-button');
+            if (!btn && !e.target.closest('.settings-menu')) {
+                menu.classList.remove('active');
             }
         });
 
-        // الوضع الداكن
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
             localStorage.setItem('ab_theme', isDark ? 'dark' : 'light');
         }
 
-        // تغيير اللغة
         function changeLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             localStorage.setItem('ab_lang', currentLang);
@@ -630,45 +584,51 @@
         }
 
         function updateLanguage() {
-            if (currentLang === 'en') {
-                document.documentElement.lang = 'en';
-                document.documentElement.dir = 'ltr';
-                document.getElementById('langText').textContent = 'Language: English';
-                document.getElementById('darkModeText').textContent = 'Dark Mode';
-                document.getElementById('locationText').textContent = 'Egypt';                document.querySelector('.search-input').placeholder = 'Search Google or type a URL';
-                document.querySelector('.btn:first-child').textContent = 'Google Search';
-                document.querySelector('.btn:last-child').textContent = "I'm Feeling Lucky";
-            } else {
-                document.documentElement.lang = 'ar';
-                document.documentElement.dir = 'rtl';
-                document.getElementById('langText').textContent = 'اللغة: العربية';
-                document.getElementById('darkModeText').textContent = 'الوضع الداكن';
-                document.getElementById('locationText').textContent = 'مصر';
-                document.querySelector('.search-input').placeholder = 'ابحث في Google أو اكتب عنوان موقع إلكتروني';
-                document.querySelector('.btn:first-child').textContent = 'بحث Google';
-                document.querySelector('.btn:last-child').textContent = 'ضربة حظ';
-            }
+            const texts = {
+                ar: {
+                    lang: 'اللغة: العربية',                    dark: 'الوضع الداكن',
+                    location: 'مصر',
+                    search: 'ابحث في Google أو اكتب عنوان موقع إلكتروني',
+                    btn1: 'بحث Google',
+                    btn2: 'ضربة حظ'
+                },
+                en: {
+                    lang: 'Language: English',
+                    dark: 'Dark Mode',
+                    location: 'Egypt',
+                    search: 'Search Google or type a URL',
+                    btn1: 'Google Search',
+                    btn2: "I'm Feeling Lucky"
+                }
+            };
+            const t = texts[currentLang];
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langText').textContent = t.lang;
+            document.getElementById('darkModeText').textContent = t.dark;
+            document.getElementById('locationText').textContent = t.location;
+            document.querySelector('.search-input').placeholder = t.search;
+            const btns = document.querySelectorAll('.search-buttons .btn');
+            btns[0].textContent = t.btn1;
+            btns[1].textContent = t.btn2;
         }
 
-        // تغيير الخلفية
         function changeBackground() {
             const url = prompt('أدخل رابط الصورة:', currentBg);
             if (url) {
                 currentBg = url;
-                document.body.style.background = `url('${url}') center/cover`;
+                document.body.style.background = `url('${url}') center/cover no-repeat`;
                 localStorage.setItem('ab_bg', url);
             }
         }
 
-        // الساعة
         function updateClock() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            document.getElementById('clock').textContent = `${hours}:${minutes}`;
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${h}:${m}`;
         }
 
-        // منع إغلاق القائمة عند النقر داخلها
         document.querySelector('.settings-menu').addEventListener('click', function(e) {
             e.stopPropagation();
         });

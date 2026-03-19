@@ -1,261 +1,633 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pro Search X AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة عبدالرحمن أحمد بشير</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body{
-height:100vh;
-background: linear-gradient(270deg,#141e30,#243b55);
-background-size:600% 600%;
-animation:bg 12s infinite;
-color:white;
-overflow:hidden;
-transition:.3s;
-}
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --bg-gradient-start: #1e1b4b;
+            --bg-gradient-end: #312e81;
+            --card-bg: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --button-bg: #6366f1;
+            --button-hover: #4f46e5;
+        }
 
-@keyframes bg{
-0%{background-position:0%}
-50%{background-position:100%}
-100%{background-position:0%}
-}
+        body.dark-mode {
+            --bg-gradient-start: #0f172a;
+            --bg-gradient-end: #1e293b;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --button-bg: #818cf8;
+            --button-hover: #6366f1;
+        }
 
-.glass{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(15px);
-border-radius:20px;
-box-shadow:0 0 25px rgba(0,0,0,0.4);
-}
+        body {
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
 
-/* top */
-.top{
-display:flex;
-justify-content:space-between;
-padding:15px;
-}
+        /* شاشة تسجيل الدخول */        .login-container {
+            background: var(--card-bg);
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            animation: slideUp 0.6s ease;
+        }
 
-.icon{cursor:pointer;padding:10px}
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-/* profile */
-.profile{
-width:45px;height:45px;border-radius:50%;border:2px solid white;
-}
+        .logo {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-/* center */
-.center{
-position:absolute;
-top:50%;left:50%;
-transform:translate(-50%,-50%);
-width:90%;max-width:550px;
-}
+        .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            font-size: 15px;
+        }
 
-.search{
-display:flex;padding:10px;
-}
+        .input-group {
+            margin-bottom: 25px;
+            text-align: right;
+        }
 
-.search input{
-flex:1;padding:15px;border:none;background:transparent;color:white;font-size:16px;
-}
+        .input-group label {
+            display: block;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
 
-.search button{
-background:#00c6ff;border:none;padding:12px 20px;border-radius:10px;
-}
+        body.dark-mode .input-field {
+            border-color: #334155;
+            background: #0f172a;
+        }
 
-/* suggestions */
-.suggestions div{
-padding:10px;cursor:pointer;
-}
-.suggestions div:hover{
-background:rgba(255,255,255,0.2);
-}
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
 
-/* settings */
-.settings{
-position:fixed;right:-320px;top:0;width:300px;height:100%;
-padding:20px;transition:.4s;
-}
-.settings.active{right:0;}
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--button-bg), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
 
-.btn{
-width:100%;margin:8px 0;padding:10px;border:none;border-radius:10px;cursor:pointer;
-}
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+        }
 
-/* chat */
-.chat{
-position:fixed;
-bottom:20px;
-right:20px;
-width:300px;
-height:400px;
-display:flex;
-flex-direction:column;
-overflow:hidden;
-}
+        .login-btn:active {
+            transform: translateY(0);
+        }
 
-.chat-header{
-padding:10px;
-text-align:center;
-}
+        /* الواجهة الرئيسية */
+        .main-container {            display: none;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
 
-.chat-messages{
-flex:1;
-padding:10px;
-overflow:auto;
-font-size:14px;
-}
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-.chat-input{
-display:flex;
-}
+        .header {
+            background: var(--card-bg);
+            padding: 25px 35px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
 
-.chat-input input{
-flex:1;
-padding:10px;
-border:none;
-}
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-.chat-input button{
-padding:10px;
-border:none;
-background:#00c6ff;
-}
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
 
-/* footer */
-.footer{
-position:fixed;bottom:10px;width:100%;text-align:center;font-size:13px;opacity:.7;
-}
-</style>
+        .avatar:hover {
+            transform: scale(1.1);
+        }
 
+        .user-name {
+            color: var(--text-primary);            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        /* صندوق البحث */
+        .search-container {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f3f4f6;
+            border-radius: 16px;
+            padding: 8px;
+            margin-bottom: 25px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .search-box {
+            background: #0f172a;        }
+
+        .search-box:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .search-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            color: var(--text-secondary);
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 15px;
+            font-size: 17px;
+            font-family: 'Cairo', sans-serif;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .search-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .search-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--button-bg), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e5e7eb;            color: var(--text-primary);
+        }
+
+        body.dark-mode .btn-secondary {
+            background: #334155;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
+
+        /* نافذة الإعدادات */
+        .settings-panel {
+            display: none;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .settings-title {
+            color: var(--text-primary);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        body.dark-mode .settings-title {
+            border-bottom-color: #334155;
+        }
+
+        .setting-item {
+            margin-bottom: 25px;
+        }
+        .setting-label {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f3f4f6;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .toggle-container {
+            background: #0f172a;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cbd5e1;
+            transition: 0.4s;
+            border-radius: 30px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+
+        .bg-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            margin-bottom: 10px;
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .bg-input {
+            border-color: #334155;
+            background: #0f172a;
+        }
+
+        .apply-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--button-bg), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);        }
+
+        .logout-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="top">
-<div class="icon glass" onclick="toggleSettings()">⚙</div>
-<img src="https://i.pravatar.cc/100" class="profile">
-</div>
+    <!-- شاشة تسجيل الدخول -->
+    <div class="login-container" id="loginScreen">
+        <div class="logo">عبدالرحمن</div>
+        <p class="subtitle">أهلاً بك! يرجى تسجيل الدخول للمتابعة</p>
+        
+        <div class="input-group">
+            <label for="loginEmail">البريد الإلكتروني</label>
+            <input type="email" id="loginEmail" class="input-field" placeholder="example@email.com">
+        </div>
+        
+        <button class="login-btn" onclick="handleLogin()">تسجيل الدخول</button>
+    </div>
 
-<div class="center">
-<div class="search glass">
-<input id="input" placeholder="ابحث...">
-<button onclick="search()">🔍</button>
-</div>
-<div id="sug" class="glass suggestions"></div>
-</div>
+    <!-- الواجهة الرئيسية -->
+    <div class="main-container" id="mainContainer">
+        <div class="header">
+            <div class="user-info">
+                <div class="avatar" id="userAvatar" onclick="logout()" title="تسجيل خروج">ع</div>
+                <div class="user-name" id="userName">user@email.com</div>
+            </div>
+            
+            <div class="controls">
+                <button class="icon-btn" onclick="toggleSettings()" title="الإعدادات">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                    </svg>
+                </button>            </div>
+        </div>
 
-<!-- settings -->
-<div class="settings glass" id="settings">
-<h3>⚙ Settings</h3>
+        <div class="search-container">
+            <div class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input type="text" class="search-input" id="searchInput" placeholder="ابحث في الويب..." onkeypress="handleEnter(event)">
+            </div>
+            
+            <div class="search-buttons">
+                <button class="search-btn btn-primary" onclick="performSearch()">بحث</button>
+                <button class="search-btn btn-secondary" onclick="luckySearch()">ضربة حظ</button>
+            </div>
+        </div>
 
-<button class="btn" onclick="setBg()">🌄 Custom BG</button>
-<button class="btn" onclick="bg1()">🏔 Nature</button>
-<button class="btn" onclick="bg2()">🌌 Space</button>
-<button class="btn" onclick="bg3()">🌆 City</button>
+        <!-- لوحة الإعدادات -->
+        <div class="settings-panel" id="settingsPanel">
+            <h3 class="settings-title">الإعدادات</h3>
+            
+            <div class="setting-item">
+                <div class="toggle-container">
+                    <span class="setting-label" style="margin: 0;">الوضع الداكن</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="darkModeToggle" onchange="toggleTheme()">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
 
-<button class="btn" onclick="toggleLang()">🌐 Language</button>
-<button class="btn" onclick="toggleMode()">🌙 Mode</button>
-</div>
+            <div class="setting-item">
+                <label class="setting-label">تغيير الخلفية (رابط الصورة)</label>
+                <input type="text" class="bg-input" id="bgInput" placeholder="https://example.com/image.jpg">
+                <button class="apply-btn" onclick="changeBackground()">تطبيق الخلفية</button>
+            </div>
+        </div>
+    </div>
 
-<!-- AI CHAT -->
-<div class="chat glass">
-<div class="chat-header">🤖 AI</div>
-<div class="chat-messages" id="chat"></div>
-<div class="chat-input">
-<input id="chatInput">
-<button onclick="send()">➤</button>
-</div>
-</div>
+    <script>
+        // العناصر
+        const loginScreen = document.getElementById('loginScreen');
+        const mainContainer = document.getElementById('mainContainer');
+        const settingsPanel = document.getElementById('settingsPanel');
 
-<div class="footer">
-Designed by Abdelrahman Bashir
-</div>
+        // عند تحميل الصفحة
+        window.onload = function() {
+            const savedUser = localStorage.getItem('ab_user');
+            const savedTheme = localStorage.getItem('ab_theme');
+            const savedBg = localStorage.getItem('ab_bg');
+            if (savedUser) {
+                showMainInterface(savedUser);
+            }
 
-<script>
-let input=document.getElementById("input")
-let sug=document.getElementById("sug")
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeToggle').checked = true;
+            }
 
-function search(){
-let q=input.value
-if(q) window.open("https://www.google.com/search?q="+q)
-}
+            if (savedBg) {
+                document.body.style.backgroundImage = `url('${savedBg}')`;
+                document.getElementById('bgInput').value = savedBg;
+            }
+        };
 
-/* suggestions */
-let words=["facebook","youtube","chatgpt","ai","games","coding"]
+        // تسجيل الدخول
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value.trim();
+            
+            if (email && email.includes('@') && email.includes('.')) {
+                localStorage.setItem('ab_user', email);
+                showMainInterface(email);
+            } else {
+                alert('الرجاء إدخال بريد إلكتروني صحيح');
+            }
+        }
 
-input.oninput=()=>{
-sug.innerHTML=""
-let v=input.value.toLowerCase()
-words.forEach(w=>{
-if(w.includes(v)&&v!=""){
-let d=document.createElement("div")
-d.innerText=w
-d.onclick=()=>{input.value=w;search()}
-sug.appendChild(d)
-}
-})
-}
+        // عرض الواجهة الرئيسية
+        function showMainInterface(email) {
+            loginScreen.style.display = 'none';
+            mainContainer.style.display = 'block';
+            document.getElementById('userName').textContent = email;
+            document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
+        }
 
-/* settings */
-function toggleSettings(){
-document.getElementById("settings").classList.toggle("active")
-}
+        // تسجيل الخروج
+        function logout() {
+            if (confirm('هل تريد تسجيل الخروج؟')) {
+                localStorage.removeItem('ab_user');
+                location.reload();
+            }
+        }
 
-/* backgrounds */
-function setBg(){
-let url=prompt("Image URL")
-if(url){
-document.body.style.background=`url(${url}) center/cover`
-localStorage.setItem("bg",url)
-}
-}
-function bg1(){set("https://picsum.photos/1920/1080?nature")}
-function bg2(){set("https://picsum.photos/1920/1080?space")}
-function bg3(){set("https://picsum.photos/1920/1080?city")}
+        // البحث
+        function handleEnter(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        }
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            }
+        }
 
-function set(u){
-document.body.style.background=`url(${u}) center/cover`
-localStorage.setItem("bg",u)
-}
+        function luckySearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}&btnI=1`;
+            }
+        }
 
-if(localStorage.getItem("bg")){
-document.body.style.background=`url(${localStorage.getItem("bg")}) center/cover`
-}
+        // الإعدادات
+        function toggleSettings() {
+            if (settingsPanel.style.display === 'block') {
+                settingsPanel.style.display = 'none';
+            } else {
+                settingsPanel.style.display = 'block';
+            }
+        }
 
-/* language */
-let ar=true
-function toggleLang(){
-if(ar){input.placeholder="Search..."}
-else{input.placeholder="ابحث..."}
-ar=!ar
-}
+        // الوضع الداكن
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('ab_theme', isDark ? 'dark' : 'light');
+        }
 
-/* mode */
-function toggleMode(){
-document.body.style.background="#111"
-}
-
-/* AI (simple demo) */
-function send(){
-let msg=document.getElementById("chatInput").value
-let chat=document.getElementById("chat")
-
-chat.innerHTML+=`<div>👤 ${msg}</div>`
-
-let reply="أنا مساعد ذكي 😎"
-if(msg.includes("hello")) reply="Hi 👋"
-if(msg.includes("ai")) reply="AI is the future 🔥"
-if(msg.includes("اسمك")) reply="أنا AI Assistant"
-
-chat.innerHTML+=`<div>🤖 ${reply}</div>`
-
-document.getElementById("chatInput").value=""
-chat.scrollTop=chat.scrollHeight
-}
-</script>
-
+        // تغيير الخلفية
+        function changeBackground() {
+            const url = document.getElementById('bgInput').value.trim();
+            if (url) {
+                document.body.style.backgroundImage = `url('${url}')`;
+                localStorage.setItem('ab_bg', url);
+                alert('تم تغيير الخلفية بنجاح!');
+            } else {
+                alert('الرجاء إدخال رابط صورة');
+            }
+        }
+    </script>
 </body>
 </html>

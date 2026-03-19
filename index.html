@@ -46,9 +46,8 @@
             transition: all 0.3s ease;
         }
 
-        /* الهيدر */
-        .header {            display: flex;
-            justify-content: space-between;
+        .header {
+            display: flex;            justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
             height: 60px;
@@ -96,15 +95,14 @@
             justify-content: center;
             font-weight: 500;
             font-size: 16px;
-            cursor: pointer;            border: none;
-            transition: all 0.2s;
+            cursor: pointer;
+            border: none;            transition: all 0.2s;
         }
 
         .avatar:hover {
             box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
         }
 
-        /* المحتوى الرئيسي */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -145,9 +143,9 @@
             transition: all 0.2s;
         }
 
-        .search-box:hover, .search-box:focus-within {            box-shadow: 0 1px 6px var(--search-shadow);
-            border-color: transparent;
-        }
+        .search-box:hover, .search-box:focus-within {
+            box-shadow: 0 1px 6px var(--search-shadow);
+            border-color: transparent;        }
 
         .search-icon {
             width: 20px;
@@ -191,13 +189,12 @@
             box-shadow: 0 1px 1px rgba(0,0,0,0.1);
         }
 
-        /* الفوتر */
         .footer {
             background: var(--button-bg);
-            padding: 12px 20px;            display: flex;
+            padding: 12px 20px;
+            display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
+            align-items: center;            font-size: 14px;
             color: var(--icon-color);
             border-top: 1px solid var(--search-border);
         }
@@ -243,10 +240,10 @@
         }
 
         .login-box {
-            background: var(--bg-color);            border: 1px solid var(--search-border);
+            background: var(--bg-color);
+            border: 1px solid var(--search-border);
             border-radius: 8px;
-            padding: 48px 40px;
-            width: 100%;
+            padding: 48px 40px;            width: 100%;
             max-width: 450px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -292,10 +289,10 @@
             width: 100%;
             padding: 10px 24px;
             background: #1a73e8;
-            color: white;            border: none;
+            color: white;
+            border: none;
             border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 14px;            font-weight: 500;
             cursor: pointer;
             margin-top: 20px;
             font-family: 'Roboto', sans-serif;
@@ -306,7 +303,6 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* قائمة الإعدادات */
         .settings-menu {
             position: fixed;
             top: 65px;
@@ -341,10 +337,10 @@
 
         .settings-item svg {
             width: 20px;
-            height: 20px;            fill: var(--icon-color);
+            height: 20px;
+            fill: var(--icon-color);
             margin-left: 12px;
         }
-
         .toggle {
             position: relative;
             width: 36px;
@@ -390,10 +386,10 @@
         }
 
         .settings-divider {
-            height: 1px;            background: var(--search-border);
+            height: 1px;
+            background: var(--search-border);
             margin: 8px 0;
         }
-
         .settings-header {
             padding: 8px 20px;
             font-size: 12px;
@@ -413,7 +409,7 @@
         <div class="login-box">
             <h1 class="login-title">تسجيل الدخول</h1>
             <p class="login-subtitle">استخدم حساب <span>Google</span> الخاص بك</p>
-            <input type="email" class="input-field" id="loginEmail" placeholder="البريد الإلكتروني أو الهاتف">
+            <input type="email" class="input-field" id="loginEmail" placeholder="البريد الإلكتروني أو الهاتف" onkeypress="handleLoginKeyPress(event)">
             <button class="login-button" onclick="handleLogin()">التالي</button>
         </div>
     </div>
@@ -439,11 +435,11 @@
             <div class="search-container">
                 <div class="search-box">
                     <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                    <input type="text" class="search-input" id="searchInput" placeholder="ابحث في Google أو اكتب عنوان موقع إلكتروني" onkeypress="handleEnter(event)">                </div>
+                    <input type="text" class="search-input" id="searchInput" placeholder="ابحث في Google أو اكتب عنوان موقع إلكتروني" onkeypress="handleEnter(event)">
+                </div>
                 
                 <div class="search-buttons">
-                    <button class="btn" onclick="performSearch()">بحث Google</button>
-                    <button class="btn" onclick="luckySearch()">ضربة حظ</button>
+                    <button class="btn" onclick="performSearch()">بحث Google</button>                    <button class="btn" onclick="luckySearch()">ضربة حظ</button>
                 </div>
             </div>
         </main>
@@ -488,11 +484,11 @@
 
             <div class="settings-divider"></div>
             
-            <div class="settings-item" onclick="logout()">                <span>تسجيل الخروج</span>
+            <div class="settings-item" onclick="logout()">
+                <span>تسجيل الخروج</span>
                 <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
             </div>
-        </div>
-    </div>
+        </div>    </div>
 
     <script>
         // المتغيرات العامة
@@ -501,10 +497,13 @@
 
         // عند تحميل الصفحة
         window.onload = function() {
+            console.log('Page loaded');
             const savedUser = localStorage.getItem('ab_user');
             const savedTheme = localStorage.getItem('ab_theme');
             const savedLang = localStorage.getItem('ab_lang');
             const savedBg = localStorage.getItem('ab_bg');
+
+            console.log('Saved user:', savedUser);
 
             if (savedUser) {
                 showMainInterface(savedUser);
@@ -532,23 +531,44 @@
 
         // تسجيل الدخول
         function handleLogin() {
-            const email = document.getElementById('loginEmail').value.trim();
+            console.log('Login button clicked');
+            const emailInput = document.getElementById('loginEmail');
+            const email = emailInput.value.trim();
             
-            if (email && email.includes('@')) {
-                localStorage.setItem('ab_user', email);
+            console.log('Email entered:', email);
+            
+            if (email && email.includes('@')) {                localStorage.setItem('ab_user', email);
+                console.log('User saved to localStorage');
                 showMainInterface(email);
-            } else {                alert('الرجاء إدخال بريد إلكتروني صحيح');
+            } else {
+                alert('الرجاء إدخال بريد إلكتروني صحيح');
+                emailInput.focus();
+            }
+        }
+
+        // التعامل مع زر Enter
+        function handleLoginKeyPress(event) {
+            console.log('Key pressed:', event.key);
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                handleLogin();
             }
         }
 
         // عرض الواجهة الرئيسية
         function showMainInterface(email) {
-            document.getElementById('loginOverlay').classList.add('hidden');
-            document.getElementById('mainContent').classList.remove('hidden');
+            console.log('Showing main interface for:', email);
+            const loginOverlay = document.getElementById('loginOverlay');
+            const mainContent = document.getElementById('mainContent');
+            
+            loginOverlay.classList.add('hidden');
+            mainContent.classList.remove('hidden');
             
             const avatar = document.getElementById('userAvatar');
             avatar.textContent = email.charAt(0).toUpperCase();
             avatar.title = email;
+            
+            console.log('Login successful');
         }
 
         // تسجيل الخروج
@@ -566,8 +586,7 @@
             }
         }
 
-        function performSearch() {
-            const query = document.getElementById('searchInput').value.trim();
+        function performSearch() {            const query = document.getElementById('searchInput').value.trim();
             if (query) {
                 window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
             }
@@ -586,7 +605,8 @@
             menu.classList.toggle('active');
         }
 
-        // إغلاق القائمة عند النقر خارجها        document.addEventListener('click', function(e) {
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(e) {
             const settingsMenu = document.getElementById('settingsMenu');
             const settingsButton = e.target.closest('.icon-button');
             
@@ -615,8 +635,7 @@
                 document.documentElement.dir = 'ltr';
                 document.getElementById('langText').textContent = 'Language: English';
                 document.getElementById('darkModeText').textContent = 'Dark Mode';
-                document.getElementById('locationText').textContent = 'Egypt';
-                document.querySelector('.search-input').placeholder = 'Search Google or type a URL';
+                document.getElementById('locationText').textContent = 'Egypt';                document.querySelector('.search-input').placeholder = 'Search Google or type a URL';
                 document.querySelector('.btn:first-child').textContent = 'Google Search';
                 document.querySelector('.btn:last-child').textContent = "I'm Feeling Lucky";
             } else {
@@ -635,7 +654,8 @@
         function changeBackground() {
             const url = prompt('أدخل رابط الصورة:', currentBg);
             if (url) {
-                currentBg = url;                document.body.style.background = `url('${url}') center/cover`;
+                currentBg = url;
+                document.body.style.background = `url('${url}') center/cover`;
                 localStorage.setItem('ab_bg', url);
             }
         }
